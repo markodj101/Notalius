@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import "./OpenPage.css";
+import { open } from '@tauri-apps/plugin-dialog';
 
 function OpenPage() {
     useEffect(() => {
@@ -27,8 +28,24 @@ function OpenPage() {
     );
 }
 
-function openPdf(){
-    console.log("hello");
-}
+async function openPdf() {
+    console.log("Opening PDF dialog...");
+    try {
+        const selected = await open({
+            multiple: false,
+            directory: false,
+          });
+          console.log(selected);
+        
 
+        if (selected) {
+            console.log('Selected file:', selected);
+            // You can now process the selected file
+        } else {
+            console.log('No file selected.');
+        }
+    } catch (error) {
+        console.error('Error opening file dialog:', error);
+    }  
+}
 export default OpenPage;

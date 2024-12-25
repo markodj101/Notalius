@@ -1,5 +1,4 @@
 import OpenPage from "./OpenPage";"./OpenPage.jsx";
-
 function App() {
   
   return(
