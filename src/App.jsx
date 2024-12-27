@@ -1,9 +1,9 @@
-import OpenPage from "./OpenPage";"./OpenPage.jsx";
+import OpenPage from "./OpenPage.jsx";
 function App() {
-  
+
   return(
     <>
-      <OpenPage/>
+    <OpenPage/>
     </>
   );
 }

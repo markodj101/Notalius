@@ -18,25 +18,27 @@ function OpenPage() {
     }, []);
 
     return (
-        <>
+        <div>
             <button onClick={openPdf}>
                 <span aria-hidden="true">Open PDF</span>
                 <span></span>
                 <span>Open PDF</span>
             </button>
-        </>
+        </div>
     );
 }
 
-async function openPdf() {
+async function openPdf() { // Opens the default file explorer for choosing a PDF file
     console.log("Opening PDF dialog...");
     try {
         const selected = await open({
             multiple: false,
             directory: false,
-          });
-          console.log(selected);
-        
+            filters: [{
+                name: 'PDF Files',
+                extensions: ['pdf']
+            }]
+        });
 
         if (selected) {
             console.log('Selected file:', selected);
@@ -46,6 +48,7 @@ async function openPdf() {
         }
     } catch (error) {
         console.error('Error opening file dialog:', error);
-    }  
+    }
 }
+
 export default OpenPage;
